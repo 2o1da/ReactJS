@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-diable */
+
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  let [a, b] = useState(["사랑해", "좋아해", "소중해"]);
+
+  let post = `박민정`;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="black-nav">
+        <div>Blog</div>
+      </div>
+      <div className="post-list">
+        <h3>
+          {post}
+          <span onClick={() => {}}>👍</span>
+        </h3>
+        <h3>
+          {post}
+          <span onClick="">👍</span>
+        </h3>
+        <p>{a[0]}</p>
+        <hr></hr>
+        <h3>{post}</h3>
+        <p>{a[1]}</p>
+        <hr></hr>
+        <h3>{post}</h3>
+        <p>{a[2]}</p>
+        <hr></hr>
+      </div>
     </div>
   );
 }
