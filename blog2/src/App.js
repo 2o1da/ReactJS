@@ -6,7 +6,8 @@ import "./App.css";
 
 function App() {
   let [a, b] = useState(["사랑해", "좋아해", "소중해"]);
-
+  let [x, b] = useState(0);
+  // b(); //b(대체할 데이터)
   let post = `박민정`;
 
   return (
@@ -17,7 +18,8 @@ function App() {
       <div className="post-list">
         <h3>
           {post}
-          <span onClick={() => {}}>👍</span>
+          <span onClick={() => {b(x++)}}>👍</span>
+          {x}
         </h3>
         <h3>
           {post}
