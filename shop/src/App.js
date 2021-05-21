@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Shoes Shop</Navbar.Brand>
+        <Navbar.Brand href="/">Shoes Shop</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
@@ -25,7 +25,7 @@ function App() {
               Home
             </Nav.Link>
             <Nav.Link>
-              <Link to="/detail">Detail</Link>
+              <Link to="/detail/0">Detail</Link>
             </Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -39,7 +39,6 @@ function App() {
       </Navbar>
 
       <Route exact path="/">
-        <div>메인페이지</div>
         <Jumbotron className="background">
           <h1>20% Season-off</h1>
           <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
