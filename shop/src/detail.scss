@@ -1,0 +1,39 @@
+@import "./_reset.scss";
+
+$칼라: red;
+
+.red {
+  color: $칼라;
+}
+
+div.container {
+  h3 {
+    color: palevioletred;
+  }
+  p {
+    color: gray;
+  }
+}
+
+@mixin 함수() {
+  background-color: #eeeeee;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 10px;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.my-alert {
+  @include 함수();
+}
+
+.my-alert-skyblue {
+  @extend .my-alert;
+
+  background-color: skyblue;
+}

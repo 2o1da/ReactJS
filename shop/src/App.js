@@ -4,11 +4,15 @@ import "./App.css";
 import { useState } from "react";
 import data from "./data.js";
 import DDetail from "./detail.js";
+import axios from "axios";
+import "./detail.scss";
 
 import { Link, Route, Switch } from "react-router-dom";
 
 function App() {
   let [shoes, changeShoes] = useState(data);
+  let [loading, changeLoading] = useState(false);
+  let [stock, changeStock] = useState([32, 56, 21]);
 
   return (
     <div className="App">
@@ -17,8 +21,8 @@ function App() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link>
-              <Link to="/">Home</Link>
+            <Nav.Link as={Link} to="/">
+              Home
             </Nav.Link>
             <Nav.Link>
               <Link to="/detail">Detail</Link>
@@ -46,16 +50,50 @@ function App() {
         <div className="container">
           <div className="row">
             {shoes.map((e, i) => {
-              return <Product shoes={e} index={i} />; // shoes[i]
+              return <Product shoes={e} index={i} key={i} />; // shoes[i]
             })}
           </div>
+
+          {loading === true ? (
+            <div className="my-alert-skyblue">
+              <p>로딩중</p>
+            </div>
+          ) : null}
+
+          <button
+            onClick={() => {
+              //axios.post("URL", { id: "solda", pw: 123 });
+              changeLoading(true);
+              axios
+                .get("https://codingapple1.github.io/shop/data2.json")
+                .then(result => {
+                  console.log("성공!");
+                  changeLoading(false);
+                  /*
+                  let temp = [...shoes];
+                  result.data.map(el => {
+                    temp.push(el);
+                  });
+                  changeShoes(temp);
+                  */
+                  changeShoes([...shoes, ...result.data]);
+                })
+                .catch(() => {
+                  console.log("실패!");
+                  changeLoading(false);
+                });
+            }}
+          >
+            더 보기
+          </button>
         </div>
       </Route>
+
       <Route path="/detail/:id">
-        <DDetail shoes={shoes} />
+        <DDetail shoes={shoes} stock={stock} changeStock={changeStock} />
       </Route>
 
-      <Route path="/:id"></Route>
+      <Route path="/:id">이것이 /:id다.</Route>
       {/* {<Route path="/a" component={Product}></Route>} */}
     </div>
   );
