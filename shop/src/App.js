@@ -1,13 +1,16 @@
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Jumbotron } from "react-bootstrap";
 import logo from "./logo.svg";
 import "./App.css";
-import { useState } from "react";
+import React, { useState, useContext } from "react";
 import data from "./data.js";
 import DDetail from "./detail.js";
 import axios from "axios";
 import "./detail.scss";
 
 import { Link, Route, Switch } from "react-router-dom";
+import Cart from "./Cart.js";
+
+export let stockContext = React.createContext();
 
 function App() {
   let [shoes, changeShoes] = useState(data);
@@ -46,12 +49,17 @@ function App() {
             <Button variant="primary">Learn more</Button>
           </p>
         </Jumbotron>
+
         <div className="container">
-          <div className="row">
-            {shoes.map((e, i) => {
-              return <Product shoes={e} index={i} key={i} />; // shoes[i]
-            })}
-          </div>
+          <stockContext.Provider value={stock}>
+            <div className="row">
+              {shoes.map((e, i) => {
+                return (
+                  <Product shoes={e} index={i} key={i} stock={stock} /> // shoes[i]
+                );
+              })}
+            </div>
+          </stockContext.Provider>
 
           {loading === true ? (
             <div className="my-alert-skyblue">
@@ -93,20 +101,33 @@ function App() {
       </Route>
 
       <Route path="/:id">이것이 /:id다.</Route>
+
+      <Route path="/cart">
+        <Cart />
+      </Route>
       {/* {<Route path="/a" component={Product}></Route>} */}
     </div>
   );
 }
 
 function Product(props) {
+  let st = useContext(stockContext);
+
   return (
     <div className="col-md-4">
       <img width="100%" src={`https://codingapple1.github.io/shop/shoes${props.index + 1}.jpg`} />
       <h3>{props.shoes.title}</h3>
       <p>{props.shoes.content}</p>
       <p>{props.shoes.price}</p>
+      {st[props.index]}
+      <Test />
     </div>
   );
+}
+
+function Test() {
+  let st = useContext(stockContext);
+  return <p>Stock : {st}</p>;
 }
 
 export default App;

@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import "./detail.scss";
+import { stockContext } from "./App.js";
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Jumbotron } from "react-bootstrap";
+import { CSSTransition } from "react-transition-group";
 
 let 박스 = styled.div`
   padding: 30px;
@@ -12,12 +15,17 @@ let 제목 = styled.h3`
 `;
 
 function Detail(props) {
+  let stock = useContext(stockContext);
+
   let history = useHistory();
   let { id } = useParams();
   let found = props.shoes.find(x => x.id == id);
 
   let [alert, changeAlert] = useState(true);
   let [input, changeInput] = useState("");
+
+  let [tab, changeTab] = useState(0);
+  let [스위치, 스위치변경] = useState(false);
 
   useEffect(() => {
     let timer = setTimeout(() => {
@@ -34,10 +42,13 @@ function Detail(props) {
 
   return (
     <div className="container">
-      <박스>
-        <제목 색상={"red"}>Detail</제목>
-        <제목 className="red">Detail</제목>
-      </박스>
+      <stockContext.Provider value={stock}>
+        <박스>
+          {stock}
+          <제목 색상={"red"}>Detail</제목>
+          <제목 className="red">Detail</제목>
+        </박스>
+      </stockContext.Provider>
 
       <div className="my-alert">
         <p>재고가 얼마 남지 않았습니다.1</p>
@@ -76,8 +87,47 @@ function Detail(props) {
           </button>
         </div>
       </div>
+
+      <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-0"
+            onClick={() => {
+              changeTab(0);
+              스위치변경(false);
+            }}
+          >
+            Active
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-1"
+            onClick={() => {
+              changeTab(1);
+              스위치변경(false);
+            }}
+          >
+            Option 2
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+
+      <CSSTransition in={스위치} classNames="wow" timeout={500}>
+        <TabContent tab={tab} 스위치변경={스위치변경} />
+      </CSSTransition>
     </div>
   );
+}
+
+function TabContent(props) {
+  useEffect(() => {
+    props.스위치변경(true);
+  });
+
+  if (props.tab === 0) {
+    return <div>0번째 탭입니다.</div>;
+  } else return <div>1번째 탭입니다.</div>;
 }
 
 function Stock(props) {

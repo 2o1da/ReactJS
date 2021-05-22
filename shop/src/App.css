@@ -1,3 +1,14 @@
+/* 애니메이션 시작 때 적용 */
+.wow-enter {
+  opacity: 0;
+}
+
+/* 애니메이션 동작 때 적용 */
+.wow-enter-active {
+  opacity: 1;
+  transition: all 500ms;
+}
+
 .background {
   background-image: url(https://online.codingapple.com/wp-content/uploads/2020/05/background.jpg);
   background-position: center;
