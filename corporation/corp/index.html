@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./static/main.css" />
+    <link rel=" shortcut icon" href="./static/favicon.ico"/>
+    <link rel="icon" href="./static/favicon.ico"/>
+
+    <title>HANWON</title>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-light fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand ms-4" href="#도메인"
+            ><img id="logo2" src="./static/logo2.png"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0 p-3">
+              <li class="nav-item">
+                <a id="nav-item" class="nav-link active mx-3" href="#"
+                  >회사소개</a
+                >
+              </li>
+              <li class="nav-item">
+                <a id="nav-item" class="nav-link active mx-3" href="#"
+                  >서비스안내</a
+                >
+              </li>
+              <li class="nav-item">
+                <a id="nav-item" class="nav-link active mx-3" href="#"
+                  >고객서비스</a
+                >
+              </li>
+              <li class="nav-item">
+                <a id="nav-item" class="nav-link active mx-3" href="#"
+                  >스케줄</a
+                >
+              </li>
+              <li class="nav-item">
+                <a id="nav-item" class="nav-link active mx-3" href="#"
+                  >커뮤니티</a
+                >
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input
+                id="search"
+                class="form-control"
+                type="search"
+                placeholder=""
+              />
+              <button class="btn btn-outline-secondary" type="submit">
+                검색
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide-to="0"
+            class=""
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+            class="active"
+            aria-current="true"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item">
+            <svg
+              class="bd-placeholder-img"
+              width="100%"
+              height="80%"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <rect width="100%" height="100%" fill="#FFFFFF"><img id="photo1" src="http://photo.sentv.co.kr/photo/2021/02/03/20210203010653.jpg"></rect>
+            </svg>
+
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>박민정</h1>
+                <p>
+                    예쁨
+                </p>
+                <p>
+                  <a class="btn btn-lg btn-primary" href="#">더 보기</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item active">
+            <svg
+              class="bd-placeholder-img"
+              width="100%"
+              height="100%"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <rect width="100%" height="100%" fill="#777"></rect>
+            </svg>
+
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Another example headline.</h1>
+                <p>
+                  Some representative placeholder content for the second slide
+                  of the carousel.
+                </p>
+                <p>
+                  <a class="btn btn-lg btn-primary" href="#">Learn more</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <svg
+              class="bd-placeholder-img"
+              width="100%"
+              height="100%"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <rect width="100%" height="100%" fill="#777"></rect>
+            </svg>
+
+            <div class="container">
+              <div class="carousel-caption text-end">
+                <h1>One more for good measure.</h1>
+                <p>
+                  Some representative placeholder content for the third slide of
+                  this carousel.
+                </p>
+                <p>
+                  <a class="btn btn-lg btn-primary" href="#">Browse gallery</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="container marketing">
+        <div class="row">
+          <div class="col-lg-4">
+            <svg
+              class="bd-placeholder-img rounded-circle"
+              width="140"
+              height="140"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder: 140x140"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#777"></rect>
+              <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            </svg>
+
+            <h2>박</h2>
+            <p>사랑해</p>
+            <p><a class="btn btn-secondary" href="#">더 보기</a></p>
+          </div>
+          <!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <svg
+              class="bd-placeholder-img rounded-circle"
+              width="140"
+              height="140"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder: 140x140"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#777"></rect>
+              <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            </svg>
+
+            <h2>민</h2>
+            <p>좋아해</p>
+            <p><a class="btn btn-secondary" href="#">더 보기</a></p>
+          </div>
+          <!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <svg
+              class="bd-placeholder-img rounded-circle"
+              width="140"
+              height="140"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder: 140x140"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#777"></rect>
+              <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            </svg>
+
+            <h2>정</h2>
+            <p>소중해</p>
+            <p><a class="btn btn-secondary" href="#">더 보기</a></p>
+          </div>
+          <!-- /.col-lg-4 -->
+        </div>
+        <!-- /.row -->
+
+        <hr class="featurette-divider" />
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">
+              박민정
+              <span class="text-muted">MinJeong Park</span>
+            </h2>
+            <p class="lead">사랑해</p>
+          </div>
+          <div class="col-md-5">
+            <svg
+              class="
+                bd-placeholder-img bd-placeholder-img-lg
+                featurette-image
+                img-fluid
+                mx-auto
+              "
+              width="500"
+              height="500"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder: 500x500"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#eee"></rect>
+              <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+            </svg>
+          </div>
+        </div>
+
+        <hr class="featurette-divider" />
+
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">
+              박민정
+              <span class="text-muted">Minjeong Park</span>
+            </h2>
+            <p class="lead">좋아해</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <svg
+              class="
+                bd-placeholder-img bd-placeholder-img-lg
+                featurette-image
+                img-fluid
+                mx-auto
+              "
+              width="500"
+              height="500"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder: 500x500"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#eee"></rect>
+              <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+            </svg>
+          </div>
+        </div>
+
+        <hr class="featurette-divider" />
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">
+              1 <span class="text-muted">2</span>
+            </h2>
+            <p class="lead">소중해</p>
+          </div>
+          <div class="col-md-5">
+            <svg
+              class="
+                bd-placeholder-img bd-placeholder-img-lg
+                featurette-image
+                img-fluid
+                mx-auto
+              "
+              width="500"
+              height="500"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder: 500x500"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#eee"></rect>
+              <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+            </svg>
+          </div>
+        </div>
+
+         <hr class="featurette-divider" />
+      </div>
+
+      <footer class="container footer">
+        <a id="back" class="position-fixed bottom-0 end-0" href="#">🔼</a>
+        <p>Copyright © 2021 회사이름 Inc.</p>
+        <div>
+          사업자등록번호 : 120-81-84429 | 통신판매업신고번호 : 제
+          2011-경기군포-00810호 | 대표이사 : PETER DENWOOD | 주소 : 경기도
+          군포시 산본로 323번길 16-2 | 대표전화 : 031-6712-6700 | 팩스 :
+          031-6928-0000
+        </div>
+      </footer>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./static/index.js"></script>
+  </body>
+</html>
