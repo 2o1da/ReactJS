@@ -16,11 +16,31 @@ function Cart(props) {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>{props.state[0].name}</td>
-              <td>{props.state[0].quantity}</td>
-            </tr>
+            {props.states.map((e, i) => {
+              return (
+                <tr key={i}>
+                  <td>{i + 1}</td>
+                  <td>{e.name}</td>
+                  <td>{e.quantity}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        props.dispatch({ type: "수량증가" });
+                      }}
+                    >
+                      +
+                    </button>
+                    <button
+                      onClick={() => {
+                        props.dispatch({ type: "수량감소" });
+                      }}
+                    >
+                      -
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
       </div>
@@ -28,13 +48,13 @@ function Cart(props) {
   );
 }
 
-function 함수명(state) {
+function state를props로(state) {
   return {
-    state: state,
-    상품명: state.name,
+    states: state,
+    //상품명: state[1].name,
   };
 }
 
-export default connect(함수명)(Cart);
+export default connect(state를props로)(Cart);
 
 //export default Cart;

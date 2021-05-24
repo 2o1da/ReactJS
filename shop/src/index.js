@@ -8,9 +8,26 @@ import { BrowserRouter, HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
-let store = createStore(() => {
-  return [{ id: 0, name: "GG", quantity: 2 }];
-});
+let defState = [
+  { id: 0, name: "GG", quantity: 2 },
+  { id: 1, name: "NIKE", quantity: 33 },
+];
+
+function reducer(state = defState, action) {
+  if (action.type === "수량증가") {
+    let 카피 = [...state];
+    카피[0].quantity++;
+    return 카피;
+  } else if (action.type === "수량감소") {
+    let 카피 = [...state];
+    카피[0].quantity--;
+    return 카피;
+  } else {
+    return state;
+  }
+}
+
+let store = createStore(reducer);
 
 ReactDOM.render(
   <React.StrictMode>
