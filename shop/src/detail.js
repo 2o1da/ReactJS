@@ -28,6 +28,22 @@ function Detail(props) {
   let [스위치, 스위치변경] = useState(false);
 
   useEffect(() => {
+    let arr = localStorage.getItem("watched");
+
+    if (arr == null) {
+      arr = [];
+    } else {
+      arr = JSON.parse(arr);
+    }
+
+    arr.push(id);
+    arr = new Set(arr);
+    arr = [...arr];
+
+    localStorage.setItem("watced", JSON.stringify(arr));
+  }, []);
+
+  useEffect(() => {
     let timer = setTimeout(() => {
       document.querySelector(".my-alert").style.display = "none";
       changeAlert(false);
