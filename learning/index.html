@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- react, react-dom CDN -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- <div id="root"><button>Like</button></div> -->
+    <script type="text/babel">
+      const e = React.createElement;
+
+      // react안에 component가 있고 이를 상속
+      class LikeButton extends React.Component {
+        // LikeButton component
+        // component가 실행될 때 제일 먼저 수행
+        constructor(props) {
+          super(props);
+          // state = 바뀌는 부분
+          this.state = {
+            liked: false,
+          };
+        }
+
+        render() {
+          //   return e(
+          //     "button",
+          //     {
+          //       onClick: () => {
+          //         console.log("클릭됐다.");
+          //         this.setState({ liked: true });
+          //       },
+          //       type: "submit",
+          //     },
+          //     this.state.liked ? "Liked" : "Like"
+          //   ); // <button>Like</button> 만든다는 게 아니라 만들겠다!
+
+          return (
+            <button
+              type="submit"
+              onClick={() => {
+                this.setState({ liked: true });
+              }}
+            >
+              {this.state.liked ? "Liked" : "Like"}
+            </button>
+          );
+        }
+      }
+
+      class GuGuDan extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            first: Math.ceil(Math.random() * 9),
+            second: Math.ceil(Math.random() * 9),
+            value: "",
+            result: "",
+          };
+        }
+
+        render() {
+          return (
+            <div>
+              <div>
+                {this.state.first} 곱하기 {this.state.second}는 뭘까요?
+                <form>
+                  <input type="number" value={this.state.value} onChange={e => this.setState({ value: e.target.value })} />
+                  <button>입력</button>
+                </form>
+                <div>{this.state.result}</div>
+              </div>
+            </div>
+          );
+        }
+      }
+    </script>
+    <script type="text/babel">
+      // 웹에 실제로 렌더링한다
+      //   ReactDOM.render(e(LikeButton), document.querySelector("#root"));
+
+      //   ReactDOM.render(<LikeButton />, document.querySelector("#root"));
+
+      ReactDOM.render(<GuGuDan />, document.querySelector("#root"));
+    </script>
+  </body>
+</html>
