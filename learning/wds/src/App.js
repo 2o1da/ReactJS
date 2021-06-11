@@ -5,13 +5,13 @@ import "./App.css";
 //   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
 //   console.log("render-app");
-//   //   useEffect(() => {
-//   //     console.log("render-resize");
-//   //     window.addEventListener("resize", handleResize);
-//   //     return () => {
-//   //       console.log("clean-up-resize");
-//   //     };
-//   //   });
+//   useEffect(() => {
+//     console.log("render-resize");
+//     window.addEventListener("resize", handleResize);
+//     return () => {
+//       console.log("clean-up-resize");
+//     };
+//   });
 
 //   function handleResize() {
 //     setWindowWidth(window.innerWidth);
@@ -32,41 +32,51 @@ import "./App.css";
 
 // export default App;
 
-export default function App() {
-  const [resourceType, setResourceType] = useState("");
-  const [items, setItems] = useState([]);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
+// export default function App() {
+//   const [resourceType, setResourceType] = useState("");
+//   const [items, setItems] = useState([]);
+//   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+//   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    console.log("render-fetch");
-    fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
-      .then(response => response.json())
-      .then(json => setItems(json));
-    return () => {
-      console.log("clean-up-fetch");
-    };
-  }, [resourceType]);
+//   function handleResize() {
+//     setWindowWidth(window.innerWidth);
+//   }
 
-  return (
-    <>
-      <h1>{windowWidth}</h1>
-      <div>
-        <button onClick={() => setResourceType("posts")}>Posts</button>
-        <button onClick={() => setResourceType("users")}>Users</button>
-        <button onClick={() => setResourceType("comments")}>Comments</button>
-      </div>
-      <h1>{resourceType}</h1>
-      {items.map(item => {
-        return <pre>{JSON.stringify(item)}</pre>;
-      })}
-    </>
-  );
-}
+//   useEffect(() => {
+//     window.addEventListener("resize", handleResize);
+//     console.log("resize-effect");
+//   }, [windowWidth]);
 
-/*
+//   useEffect(() => {
+//     console.log("fetch-effect");
+
+//     fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
+//       .then(response => response.json())
+//       .then(json => setItems(json));
+
+//     return () => {
+//       console.log("clean-up-fetch");
+//     };
+//   }, [resourceType]);
+
+//   return (
+//     <>
+//       <h1>{windowWidth}</h1>
+//       <h2>{count}</h2>
+//       <div>
+//         <button onClick={() => setResourceType("posts")}>Posts</button>
+//         <button onClick={() => setResourceType("users")}>Users</button>
+//         <button onClick={() => setResourceType("comments")}>Comments</button>
+//         <button onClick={() => setCount(count + 1)}>Count</button>
+//       </div>
+//       <h1>{resourceType}</h1>
+//       {items.map(e => {
+//         return <pre>{JSON.stringify(e)}</pre>;
+//       })}
+//     </>
+//   );
+// }
+
 import List from "./List";
 
 function App() {
@@ -76,12 +86,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [count2, setCount2] = useState(0);
 
-  useEffect(() => {
-    console.log("useEffect", input);
-  });
-
-  const inc = e => {
-    e.preventDefault();
+  const inc = () => {
     setCount(count + 1);
   };
 
@@ -90,8 +95,6 @@ function App() {
   }
 
   const addToDo = e => {
-    e.preventDefault();
-
     let temp = [...toDos, input];
     setToDos(temp);
   };
@@ -102,20 +105,17 @@ function App() {
         {count} {count2}
       </h1>
 
-      <form>
-        <input type="text" name="" onChange={changeInput} />
+      <input
+        type="text"
+        name=""
+        onChange={e => {
+          setInput(e.target.value);
+        }}
+      />
 
-        <button onClick={addToDo}>Add</button>
-        <button onClick={inc}>Up</button>
-        <button
-          onClick={e => {
-            e.preventDefault();
-            setCount2(count2 + 2);
-          }}
-        >
-          Update
-        </button>
-      </form>
+      <button onClick={addToDo}>Add</button>
+      <button onClick={() => inc()}>Up</button>
+      <button onClick={() => setCount2(count2 + 2)}>Update</button>
 
       <List 할일={toDos} />
     </div>
@@ -123,4 +123,3 @@ function App() {
 }
 
 export default App;
-*/
